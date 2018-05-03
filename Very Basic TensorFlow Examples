@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>TensorFlow Example</title>
+
+  <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.0"> </script>
+</head>
+
+<body>
+
+
+<script>
+    
+  const test = tf.tensor([1, 2, 3, 4]);
+  test.print();
+  //does the same thing as .print()
+  console.log(test.toString());
+ 
+  //!!!!This is a second example of a tensor!!!!
+  const  data = tf.tensor([0, 0, 127, 255], [2, 2,]);
+  data.print();
+
+  //!!!!This is a three examle of a tensor!!!!
+  const values = [];
+  for (let x = 0; x < 30; x++) {
+    values[x]= Math.random() * 101;
+  }
+
+  const shape = [2, 5, 3];
+  const threeD = tf.tensor3d(values, shape, 'int32');
+
+  threeD.print();
+
+</script>
+
+</body>
+</html>

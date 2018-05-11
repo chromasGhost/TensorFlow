@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>TensorFlow.js Variables & Operations</title>
+
+  <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.0"> </script>
+</head>
+
+<body>
+
+
+<script>
+const values1 = [];
+  for (let x = 0; x < 30; x++) {
+    values1[x]= Math.random()*101;
+  }
+
+  const shape1 = [2, 5, 3];
+  const tense = tf.tensor3d(values1, shape1, 'int32');
+
+  //this is how you make a variable in tenserflow.js
+  const vtense = tf.variable(tense);
+
+  //print the array.
+  tense.print();
+
+  //just the data
+  console.log(tense.dataSync());
+
+  //just single number in array.
+  console.log(tense.get(0));
+
+
+//!!!!!!!!!!!!!!!!!Arithmetic
+
+  const values2 = [];
+  for (let x = 0; x < 30; x++) {
+    values2[x]= Math.random()*101;
+  }
+
+  const shape2 = [2, 5, 3];
+
+  const a1 = tf.tensor3d(values2, shape2, 'int32');
+  const b1 = tf.tensor3d(values2, shape2, 'int32');
+
+  //How to add numbers in tensorflow.js.  How to do arithmetic.
+  const c1 = a1.add(b1);
+ 
+  a1.print();
+  b1.print();
+  c1.print();
+
+
+//!!!!!!!!!!!!matMul
+  const values3 = [];
+  for (let x = 0; x < 15; x++) {
+    values3[x]= Math.random()*101;
+  }
+
+  const shapeA = [5, 3];
+  const shapeB = [3, 5];
+
+  const a2 = tf.tensor3d(values3, shapeA, 'int32');
+  const b2 = tf.tensor3d(values3, shapeB, 'int32');
+  //Another way to do it.
+  const bb2 = b2.transpose();
+
+  //How to matmul in tensorflow.js
+  const c2 = a2.matMul(b2);
+  //const c2 = a2.matMul(bb2);
+ 
+  //a2.print();
+  //b2.print();
+  c2.print();
+
+  
+</script>
+</body>
+</html>
